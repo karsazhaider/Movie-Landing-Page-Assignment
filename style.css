@@ -1,0 +1,560 @@
+/* ==========================================
+   1. RESET & BASE STYLES
+   ========================================== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+    background-color: #0b0f19;
+    color: #ffffff;
+    overflow-x: hidden;
+}
+
+/* ==========================================
+   2. NAVBAR
+   ========================================== */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 25px 6%;
+    position: absolute;
+    width: 100%;
+    top: 0;
+    left: 0;
+    z-index: 100;
+    background: linear-gradient(to bottom, rgba(11,15,25,0.8), transparent);
+}
+
+.logo-img {
+    height: 32px;
+    width: auto;
+    object-fit: contain;
+}
+
+.nav-links a {
+    color: #ffffff;
+    text-decoration: none;
+    margin: 0 20px;
+    font-size: 1rem;
+    font-weight: 500;
+    transition: color 0.3s;
+}
+
+.nav-links a:hover {
+    color: #e50914;
+}
+
+.nav-right {
+    display: flex;
+    align-items: center;
+    gap: 25px;
+}
+
+.search-btn-img {
+    height: 20px;
+    width: auto;
+    cursor: pointer;
+    object-fit: contain;
+}
+
+.login-btn {
+    background-color: #ff2c7a;
+    color: white;
+    border: none;
+    padding: 10px 24px;
+    font-weight: 600;
+    border-radius: 100px;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+.login-btn:hover {
+    background-color: #ff2c7a;
+}
+
+/* ==========================================
+   3. HERO BANNER
+   ========================================== */
+.hero {
+    height: 85vh;
+    background: linear-gradient(to right, rgba(11, 15, 25, 0.95) 30%, rgba(11, 15, 25, 0.4)), url('wp1814934.jpg');
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    align-items: center;
+    padding: 0 6%;
+    position: relative;
+}
+
+.hero-content {
+    max-width: 600px;
+    z-index: 5;
+}
+
+/* Injected marvelLogo.svg formatting specs */
+.hero-marvel-logo {
+    height: 25px;            
+    width: auto;             
+    object-fit: contain;     
+    display: block;          
+    margin-bottom: 15px;     
+}
+
+.hero-content h1 {
+    font-size: 3.5rem;
+    margin: 15px 0;
+    line-height: 1.1;
+}
+
+.movie-meta {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    color: #a0a5b5;
+    font-weight: 500;
+    margin-bottom: 20px;
+}
+
+.meta-separator {
+    color: #e50914;
+}
+
+.description {
+    color: #d1d5db;
+    line-height: 1.6;
+    margin-bottom: 30px;
+    font-size: 1.05rem;
+}
+
+.explore-btn {
+    background-color: #ff2c7a;
+    color: white;
+    border: none;
+    padding: 12px 28px;
+    font-size: 1rem;
+    font-weight: 600;
+    border-radius: 100px;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+.explore-btn:hover {
+    background-color: #ff2c7a;
+}
+
+/* ==========================================
+   4. PURE CSS VECTOR PLAY BUTTONS (FIXES RINGS)
+   ========================================== */
+.play-button-overlay {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    cursor: pointer;
+    z-index: 10;
+}
+
+/* Outer Ring */
+.play-icon {
+    width: 80px;
+    height: 80px;
+    background: rgba(0, 0, 0, 0.5);
+    border: 2.5px solid #ffffff;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: transform 0.3s ease, background 0.3s ease, border-color 0.3s ease;
+    position: relative;
+}
+
+/* CSS-rendered play triangle inside outer ring */
+.play-icon::after {
+    content: '';
+    display: block;
+    width: 0;
+    height: 0;
+    border-top: 12px solid transparent;
+    border-bottom: 12px solid transparent;
+    border-left: 20px solid #ffffff;
+    margin-left: 6px; /* Offsets triangle base for visual balancing */
+    transition: border-color 0.3s ease;
+}
+
+.play-button-overlay:hover .play-icon {
+    transform: scale(1.08);
+    background: rgba(229, 9, 20, 0.3);
+    border-color: #e50914;
+}
+
+.play-button-overlay:hover .play-icon::after {
+    border-left-color: #e50914;
+}
+
+/* ==========================================
+   5. NOW SHOWING MOVIE CARDS
+   ========================================== */
+.movie-section {
+    padding: 60px 6%;
+}
+
+.section-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 35px;
+}
+
+.section-header h2 {
+    font-size: 1.8rem;
+    position: relative;
+}
+
+.section-header h2::after {
+    content: '';
+    position: absolute;
+    bottom: -8px;
+    left: 0;
+    width: 40px;
+    height: 3px;
+    background-color: #e50914;
+}
+
+.view-all {
+    color: #e50914;
+    text-decoration: none;
+    font-weight: 600;
+}
+
+.movie-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 25px;
+    margin-bottom: 35px;
+}
+
+.movie-card {
+    background: #111622; 
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.3);
+    transition: transform 0.3s ease;
+    display: flex;
+    flex-direction: column;
+}
+
+.movie-card:hover {
+    transform: translateY(-8px);
+}
+
+.card-img {
+    height: 190px;
+    background-size: cover;
+    background-position: center;
+}
+
+.card-info {
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+}
+
+.card-info h3 {
+    font-size: 1.1rem;
+    margin-bottom: 5px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    color: #ffffff;
+}
+
+.genre {
+    color: #7e8494;
+    font-size: 0.9rem;
+    font-weight: 500;
+    margin-bottom: 8px;
+}
+
+.year-duration {
+    color: #4b5161;
+    font-size: 0.85rem;
+    margin-bottom: 18px;
+}
+
+.card-action-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: auto;
+}
+
+.ticket-btn {
+    background: #ff2c7a;
+    color: white;
+    border: none;
+    padding: 8px 20px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    border-radius: 20px;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+
+.ticket-btn:hover {
+    background: #ff2c7a;
+}
+
+.rating {
+    color: #7e8494;
+    font-size: 0.95rem;
+    font-weight: 500;
+}
+
+.show-more-container {
+    display: flex;
+    justify-content: center;
+    margin-top: 15px;
+}
+
+.show-more-btn {
+    background: #ff2c7a;
+    color: white;
+    border: none;
+    padding: 10px 32px;
+    font-size: 0.95rem;
+    font-weight: 600;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+
+.show-more-btn:hover {
+    background: #ff2c7a;
+}
+
+/* ==========================================
+   6. TRAILERS SHOWCASE
+   ========================================== */
+.trailers-section {
+    padding: 40px 6%;
+}
+
+.trailers-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 30px;
+}
+
+.main-video-player {
+    width: 100%;
+    max-width: 960px;
+    height: 480px;
+    background-size: cover;
+    background-position: center;
+    border-radius: 16px;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.5);
+}
+
+/* Showcase Player Centralised Button Frame */
+.player-overlay-btn {
+    width: 70px;
+    height: 70px;
+    background: rgba(0, 0, 0, 0.5);
+    border: 2px solid #ffffff;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    transition: transform 0.3s ease, background-color 0.3s ease;
+}
+
+.play-triangle {
+    width: 0;
+    height: 0;
+    border-top: 10px solid transparent;
+    border-bottom: 10px solid transparent;
+    border-left: 16px solid #ffffff;
+    margin-left: 4px;
+}
+
+.main-video-player:hover .player-overlay-btn {
+    transform: scale(1.1);
+    background-color: rgba(229, 9, 20, 0.6);
+    border-color: #e50914;
+}
+
+/* Horizontal Carousels Controls Row */
+.thumbnail-carousel-row {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 18px;
+    width: 100%;
+    max-width: 960px;
+    flex-wrap: wrap;
+}
+
+.thumb-card {
+    width: 130px;
+    height: 130px;
+    background-size: cover;
+    background-position: center;
+    border-radius: 12px;
+    position: relative;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    opacity: 0.6;
+    transition: opacity 0.3s, transform 0.3s;
+}
+
+.thumb-mini-overlay {
+    width: 34px;
+    height: 34px;
+    background: rgba(0, 0, 0, 0.6);
+    border: 1.5px solid rgba(255, 255, 255, 0.9);
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.mini-triangle {
+    width: 0;
+    height: 0;
+    border-top: 5px solid transparent;
+    border-bottom: 5px solid transparent;
+    border-left: 8px solid #ffffff;
+    margin-left: 2px;
+}
+
+.thumb-card:hover, .thumb-card.active {
+    opacity: 1;
+    transform: scale(1.05);
+}
+
+/* ==========================================
+   7. FOOTER DESIGN SYSTEM
+   ========================================== */
+.footer {
+    background: #06090f;
+    padding: 60px 6% 20px;
+    border-top: 1px solid #111622;
+}
+
+.footer-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    gap: 40px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.footer-brand {
+    flex: 2;
+    min-width: 280px;
+}
+
+.footer-logo-container {
+    margin-bottom: 15px;
+}
+
+.footer-logo-img {
+    height: 32px;
+    width: auto;
+    object-fit: contain;
+}
+
+.footer-desc {
+    color: #7e8494;
+    line-height: 1.6;
+    font-size: 0.95rem;
+    margin-bottom: 25px;
+    max-width: 440px;
+}
+
+.app-buttons {
+    display: flex;
+    gap: 15px;
+}
+
+.badge-link img {
+    height: 38px;
+    width: auto;
+    object-fit: contain;
+    border-radius: 6px;
+    transition: transform 0.2s ease;
+}
+
+.badge-link:hover img {
+    transform: scale(1.04);
+}
+
+.footer-links, .footer-contact {
+    flex: 1;
+    min-width: 160px;
+}
+
+.footer-links h3, .footer-contact h3 {
+    font-size: 1.1rem;
+    color: #ffffff;
+    margin-bottom: 20px;
+}
+
+.footer-links a {
+    display: block;
+    color: #7e8494;
+    text-decoration: none;
+    margin-bottom: 12px;
+    font-size: 0.95rem;
+    transition: color 0.2s;
+}
+
+.footer-links a:hover {
+    color: #ffffff;
+}
+
+.footer-contact p {
+    color: #7e8494;
+    font-size: 0.95rem;
+    margin-bottom: 12px;
+}
+
+.footer-bottom {
+    text-align: center;
+    margin-top: 50px;
+    padding-top: 20px;
+    border-top: 1px solid #111622;
+    color: #4b5161;
+    font-size: 0.85rem;
+}
+
+/* ==========================================
+   8. MEDIA QUERIES
+   ========================================== */
+@media (max-width: 1024px) {
+    .movie-grid {
+        grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    }
+}
+
+@media (max-width: 768px) {
+    .main-video-player { height: 280px; }
+    .thumb-card { width: 80px; height: 80px; }
+    .footer-container { flex-direction: column; gap: 30px; }
+}
